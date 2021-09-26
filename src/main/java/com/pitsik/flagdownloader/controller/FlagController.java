@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @Slf4j
@@ -29,7 +30,7 @@ public class FlagController {
             throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Failed to get list of flags from outside API");
         }
         log.info("Saved {} country flags: {}", resultFlags.size(), resultFlags);
-        return resultFlags;
+        return resultFlags.stream().sorted().collect(Collectors.toList());
     }
 
 }
