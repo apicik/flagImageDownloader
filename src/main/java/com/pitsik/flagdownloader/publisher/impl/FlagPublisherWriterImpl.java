@@ -34,7 +34,7 @@ public class FlagPublisherWriterImpl implements FlagPublisher {
                         flagNameList.add(flag.getCountryName());
                         log.info
                                 (
-                                        "Retained the country flag: {} in file: {}", flag.getCountryName(),
+                                        "Save country flag: {} in file: {}", flag.getCountryName(),
                                         outputFile.getFileName().toString()
                                 );
                     } catch (IOException e) {

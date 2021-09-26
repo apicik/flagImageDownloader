@@ -32,7 +32,7 @@ public class GeoNameImageService implements ImageService {
                                                 URL_IMAGE + codeFlag + ".gif",
                                                 byte[].class
                                         );
-                                log.info("Getting bytes for a flag: {} country: {}", codeFlag, countryName);
+                                log.info("Downloads bytes for flag: {} country: {}", codeFlag, countryName);
                                 return new FlagRsDto(codeFlag, countryName, flagBytes);
                             } catch (RestClientException e) {
                                 log.error("Failed to get bytes for flag: {} country: {}",
