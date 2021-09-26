@@ -17,7 +17,7 @@ import java.util.List;
 
 @Slf4j
 @Component
-public class FlagWriter implements FlagPublisher {
+public class FlagPublisherWriterImpl implements FlagPublisher {
     @Value("${base.dir}")
     private String BASE_DIR;
     @Value("${end.dir}")

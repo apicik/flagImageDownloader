@@ -3,7 +3,7 @@ package com.pitsik.flagdownloader.service.impl;
 import com.pitsik.flagdownloader.dto.FlagRsDto;
 import com.pitsik.flagdownloader.dto.RestCountriesRsDto;
 import com.pitsik.flagdownloader.exception.EmptyBodyException;
-import com.pitsik.flagdownloader.publisher.impl.FlagWriter;
+import com.pitsik.flagdownloader.publisher.impl.FlagPublisherWriterImpl;
 import com.pitsik.flagdownloader.service.CountryProducer;
 import com.pitsik.flagdownloader.service.FlagService;
 import lombok.AllArgsConstructor;
@@ -19,14 +19,14 @@ public class DownloadAndSaveFlagServiceImpl implements FlagService {
 
     final CountryProducer countryFlags;
     final GeoNameImageService geoNameImageService;
-    final FlagWriter writePublisher;
+    final FlagPublisherWriterImpl flagPublisherWriter;
 
     public List<String> getAndDownloadFlags() throws EmptyBodyException {
 
         List<RestCountriesRsDto> restCountriesRsDtoList = countryFlags.getCountry();
         List<FlagRsDto> flagImageInBytes = geoNameImageService.getFlagImagesInBytes(restCountriesRsDtoList);
 
-        return writePublisher.publish(flagImageInBytes);
+        return flagPublisherWriter.publish(flagImageInBytes);
     }
 
 }
