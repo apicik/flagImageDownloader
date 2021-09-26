@@ -20,7 +20,7 @@ public class GeoNameImageService implements ImageService {
     @Value("${url.image}")
     private String URL_IMAGE;
 
-    public List<FlagRsDto> getFlagImagesInBytes(List<RestCountriesRsDto> restCountriesRsDtoList) { // get flag from service
+    public List<FlagRsDto> getFlagImagesInBytes(List<RestCountriesRsDto> restCountriesRsDtoList) {
 
         List<FlagRsDto> flagImagesInBytes = restCountriesRsDtoList.stream()
                 .map(country -> {

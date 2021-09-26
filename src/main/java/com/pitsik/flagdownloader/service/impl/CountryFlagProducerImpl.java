@@ -36,7 +36,7 @@ public class CountryFlagProducerImpl implements CountryProducer {
                         }
                 );
 
-        List<RestCountriesRsDto> countries = new ArrayList<>(responseEntity.getBody()); // add Exception and get in try-catch EmptyBodyException extends Exception(Пустое тело)
+        List<RestCountriesRsDto> countries = new ArrayList<>(responseEntity.getBody());
         checkNullOrEmpty(responseEntity);
         log.info("Flags received: {}, Country flags: {}", countries.size(),
                 countries.stream().map(country -> country.getName().getCommon()).collect(Collectors.toList()));
