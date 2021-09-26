@@ -38,14 +38,14 @@ public class CountryFlagProducerImpl implements CountryProducer {
 
         List<RestCountriesRsDto> countries = new ArrayList<>(responseEntity.getBody()); // add Exception and get in try-catch EmptyBodyException extends Exception(Пустое тело)
         checkNullOrEmpty(responseEntity);
-        log.info("Получено флагов: {}, Флаги стран: {}", countries.size(),
+        log.info("Flags received: {}, Country flags: {}", countries.size(),
                 countries.stream().map(country -> country.getName().getCommon()).collect(Collectors.toList()));
         return countries;
     }
 
     private void checkNullOrEmpty(ResponseEntity<List<RestCountriesRsDto>> responseEntity) throws EmptyBodyException {
         if (responseEntity.getBody() == null || responseEntity.getBody().isEmpty()) {
-            throw new EmptyBodyException("Пустое тело в ответе responseEntity");
+            throw new EmptyBodyException("Empty body in responseEntity");
         }
     }
 }

@@ -35,19 +35,20 @@ public class FlagWriter implements FlagPublisher {
                         flagNameList.add(flag.getCountryName());
                         log.info
                                 (
-                                        "Сохранили флаг страны: {} в файл: {}", flag.getCountryName(),
+                                        "Retained the country flag: {} in file: {}", flag.getCountryName(),
                                         outputFile.getFileName().toString()
                                 );
                     } catch (IOException e) {
-                        log.error("Не удалось сохранить файл: {}", outputFile.getFileName().toString(), e);
+                        log.error("Failed to save file: {}", outputFile.getFileName().toString(), e);
                     }
                 }
         );
-        return flagNameList.stream().sorted(String::compareTo).collect(Collectors.toList());
+        return flagNameList;
     }
 
     @PostConstruct
     private void createFolders() {
+        log.info("Creating folders: {}", BASE_DIR + END_DIR);
         new File(BASE_DIR + END_DIR).mkdirs();
     }
 

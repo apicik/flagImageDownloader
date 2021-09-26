@@ -21,17 +21,15 @@ public class FlagController {
 
     @GetMapping("/download-flags")
     public List<String> getAndDownloadFlags() {
-        log.info("Получен GET запрос");
+        log.info("GET request received");
         List<String> resultFlags;
         try {
             resultFlags = downloadAndSaveFlagServiceImpl.getAndDownloadFlags();
         } catch (EmptyBodyException e) {
-            log.error("Не удалось получить список флагов", e);
-            throw new ResponseStatusException(
-                    HttpStatus.NO_CONTENT, "Не удалось получить список флагов у стороннего API"
-            );
+            log.error("Failed to get the list of flags", e);
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "Failed to get list of flags from outside API");
         }
-        log.info("Сохранено {} флагов стран: {}", resultFlags.size(), resultFlags);
+        log.info("Saved {} country flags: {}", resultFlags.size(), resultFlags);
         return resultFlags;
     }
 

@@ -32,10 +32,10 @@ public class GeoNameImageService implements ImageService {
                                                 URL_IMAGE + codeFlag + ".gif",
                                                 byte[].class
                                         );
-                                log.info("Сохраняем флаг: {} страны: {}", codeFlag, countryName);
+                                log.info("Save the flag: {} country: {}", codeFlag, countryName);
                                 return new FlagRsDto(codeFlag, countryName, flagBytes);
                             } catch (RestClientException e) {
-                                log.error("Не удалось получить байты для флага: {} страны: {}",
+                                log.error("Failed to get bytes for flag: {} country: {}",
                                         country.getCca2(), country.getName().getCommon());
                                 return null;
                             }
@@ -44,7 +44,7 @@ public class GeoNameImageService implements ImageService {
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
 
-        log.info("Получены байты для {} флагов: {}", flagImagesInBytes.size(),
+        log.info("Bytes received for {} flags: {}", flagImagesInBytes.size(),
                 flagImagesInBytes.stream().map(FlagRsDto::getCountryName).collect(Collectors.toList()));
 
         return flagImagesInBytes;
