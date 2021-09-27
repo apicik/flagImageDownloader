@@ -9,7 +9,7 @@ base.dir(указана в application.properties) + /geonames/flags/x/.
 
 git clone https://github.com/apicik/flagImageDownloader.git
 
-mvn package && java -jar .\target\FlagDownloader-0.0.1.jar
+cd flagimagedownloader && mvn package && java -jar .\target\FlagDownloader-0.0.1.jar
 
 Для загрузки флагов стран необходимо перейти по ссылке: 
 
